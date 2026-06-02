@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import '../models/ai_message_model.dart';
 

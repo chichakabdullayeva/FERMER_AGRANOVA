@@ -12,7 +12,7 @@ class CommentService {
   CommentService._internal();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  const _uuid = Uuid();
+  final _uuid = Uuid();
 
   /// Create a new comment on a post
   Future<CommentModel> createComment({

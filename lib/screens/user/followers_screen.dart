@@ -44,13 +44,8 @@ class _FollowersScreenState extends State<FollowersScreen> {
       final userProfile = await _userService.getUserProfile(widget.userId);
       if (userProfile == null) return;
 
-      final followers = <UserModel>[];
-      for (String followerId in userProfile.followers) {
-        final followerProfile = await _userService.getUserProfile(followerId);
-        if (followerProfile != null) {
-          followers.add(followerProfile);
-        }
-      }
+      // Get all followers for this user
+      final followers = await _userService.getFollowersList(widget.userId);
 
       setState(() {
         _allFollowers = followers;
@@ -79,8 +74,10 @@ class _FollowersScreenState extends State<FollowersScreen> {
     if (currentUser == null) return;
 
     try {
-      final isFollowing =
-          await _userService.isFollowing(currentUser.uid, user.uid);
+      final isFollowing = await _userService.isFollowing(
+        currentUserId: currentUser.uid,
+        targetUserId: user.uid,
+      );
 
       if (isFollowing) {
         await _userService.unfollowUser(
@@ -167,7 +164,9 @@ class _FollowersScreenState extends State<FollowersScreen> {
                       return FutureBuilder<bool>(
                         future: currentUser != null
                             ? _userService.isFollowing(
-                                currentUser.uid, follower.uid)
+                                currentUserId: currentUser.uid,
+                                targetUserId: follower.uid,
+                              )
                             : Future.value(false),
                         builder: (context, snapshot) {
                           final isFollowing = snapshot.data ?? false;

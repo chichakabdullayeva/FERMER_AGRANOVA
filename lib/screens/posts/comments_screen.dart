@@ -5,7 +5,6 @@ import '../../models/comment_model.dart';
 import '../../services/auth_service.dart';
 import '../../services/comment_service.dart';
 import '../../services/user_service.dart';
-import '../../models/app_localizations_stub.dart';
 
 class CommentsScreen extends StatefulWidget {
   final PostModel post;
@@ -24,9 +23,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
   final _commentService = CommentService();
   final _authService = AuthService();
   final _userService = UserService();
-  AppLocalizations _localizations(BuildContext context) {
-    return AppLocalizations.of(context) ?? AppLocalizationsEn();
-  }
   bool _isSubmitting = false;
   String? _errorMessage;
 
@@ -157,7 +153,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = _localizations(context);
     final currentUser = _authService.getCurrentUser();
 
     return Scaffold(

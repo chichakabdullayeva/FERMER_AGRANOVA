@@ -4,7 +4,6 @@ import './tabs/messages_screen.dart';
 import './tabs/groups_screen.dart';
 import './tabs/weather_screen.dart';
 import './tabs/support_screen.dart';
-import '../config/theme.dart';
 import '../models/app_localizations_stub.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'config/theme.dart';
 import 'services/firebase_service.dart';
 import 'services/notification_service.dart';
@@ -12,9 +10,59 @@ import 'screens/auth/register_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await FirebaseService.initialize();
-  await NotificationService.initialize();
+  String? configError;
+  try {
+    await FirebaseService.initialize();
+    await NotificationService.initialize();
+  } catch (e) {
+    configError = e.toString();
+  }
+
+  if (configError != null) {
+    runApp(ConfigErrorApp(message: configError));
+    return;
+  }
+
   runApp(const AgranovaApp());
+}
+
+class ConfigErrorApp extends StatelessWidget {
+  final String message;
+  const ConfigErrorApp({Key? key, required this.message}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Agranova - Configuration Error',
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Configuration Required')),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Firebase configuration is missing or invalid.',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 12),
+                Text(message, style: const TextStyle(color: Colors.red)),
+                const SizedBox(height: 12),
+                const Text('How to fix:'),
+                const SizedBox(height: 8),
+                const Text('- Run `flutterfire configure` to generate `firebase_options.dart`'),
+                const Text('- Or open the Firebase console → Project settings → Your apps, and copy the web config into'),
+                const Text('  `lib/services/firebase_options.dart` replacing the placeholder values.'),
+                const SizedBox(height: 12),
+                const Text('After updating the config restart the app.'),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class AgranovaApp extends StatefulWidget {
@@ -33,7 +81,7 @@ class _AgranovaAppState extends State<AgranovaApp> {
     return MaterialApp(
       title: 'Agranova',
       theme: AppTheme.lightTheme,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

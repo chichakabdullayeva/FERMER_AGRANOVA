@@ -48,7 +48,7 @@ class AuthService {
 
       return credential;
     } on FirebaseAuthException catch (e) {
-      throw AuthException(e.message ?? 'Registration failed');
+      throw AuthException('${e.code}: ${e.message ?? 'Registration failed'}');
     }
   }
 
@@ -64,7 +64,7 @@ class AuthService {
       );
       return credential;
     } on FirebaseAuthException catch (e) {
-      throw AuthException(e.message ?? 'Login failed');
+      throw AuthException('${e.code}: ${e.message ?? 'Login failed'}');
     }
   }
 
@@ -82,7 +82,7 @@ class AuthService {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw AuthException(e.message ?? 'Password reset failed');
+      throw AuthException('${e.code}: ${e.message ?? 'Password reset failed'}');
     }
   }
 

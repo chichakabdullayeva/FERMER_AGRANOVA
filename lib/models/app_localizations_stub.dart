@@ -4,196 +4,322 @@ class AppLocalizations {
     return AppLocalizationsEn();
   }
 
-  String get tabAnaSehife => 'Ana Səhifə';
-  String get tabMessaging => 'Mesajlar';
-  String get tabGroups => 'Qruplar';
-  String get tabWeather => 'Hava';
-  String get tabSupport => 'Dəstək';
-  String get login => 'Giriş';
-  String get register => 'Qeydiyyat';
-  String get email => 'E-mail';
-  String get password => 'Şifrə';
-  String get forgotPassword => 'Şifrəni unutmusunuz?';
-  String get dontHaveAccount => 'Hesabınız yoxdur?';
-  String get alreadyHaveAccount => 'Artıq hesabınız var?';
-  String get name => 'Ad';
-  String get confirmPassword => 'Şifrəni təsdiq edin';
-  String get create => 'Yaratmaq';
-  String get cancel => 'Ləğv et';
-  String get save => 'Yadda saxla';
-  String get delete => 'Sil';
-  String get edit => 'Redaktə et';
-  String get close => 'Bağla';
-  String get loading => 'Yüklənir...';
-  String get error => 'Xəta';
-  String get success => 'Uğurlu';
-  String get message => 'Mesaj';
-  String get messages => 'Mesajlar';
-  String get group => 'Qrup';
-  String get groups => 'Qruplar';
-  String get weather => 'Hava';
-  String get support => 'Dəstək';
-  String get feed => 'Feed';
-  String get post => 'Paylaş';
-  String get posts => 'Paylaşmalar';
-  String get comment => 'Şərh';
-  String get comments => 'Şərhlər';
-  String get like => 'Bəyən';
-  String get likes => 'Bəyənmələr';
-  String get share => 'Paylaş';
-  String get search => 'Axtarış';
-  String get settings => 'Ayarlar';
-  String get profile => 'Profil';
-  String get logout => 'Çıxış';
-  String get yes => 'Bəli';
-  String get no => 'Xeyr';
-  String get ok => 'Tamam';
-  String get following => 'Müdviq';
-  String get followers => 'Müdviq olunmuş';
-  String get follow => 'Müdviq ol';
-  String get unfollow => 'Müdviqlikdən çıx';
-  String get createPost => 'Paylaşma yarat';
-  String get writeYourPost => 'Paylaşmanı yazın...';
-  String get addImage => 'Şəkil əlavə et';
-  String get uploadImage => 'Şəkil yüklə';
-  String get expertConsultation => 'Ekspert Konsultasiyası';
-  String get bookCall => 'Zəng Axtar';
-  String get premium => 'Premium';
-  String get upgradeToPremium => 'Premium-a Upgrade Edin';
-  String get aiAssistant => 'AI Assistent';
-  String get sendMessage => 'Mesaj Göndər';
-  String get typeMessage => 'Mesajınızı yazın...';
-  String get location => 'Məkan';
-  String get temperature => 'Temperatur';
-  String get humidity => 'Rütubət';
-  String get windSpeed => 'Rüzgar Sürəti';
+  // Titles
+  String get appTitle => 'Agranova';
+  String get appSubtitle => 'Farmer Community';
+
+  // Tabs
+  String get tabAnaSehife => 'Feed';
+  String get tabSohbetler => 'Messages';
+  String get tabQruplar => 'Groups';
+  String get tabHava => 'Weather';
+  String get tabDastek => 'Support';
+
+  // Buttons
+  String get buttonLogin => 'Login';
+  String get buttonRegister => 'Register';
+  String get buttonLogout => 'Logout';
+  String get buttonSave => 'Save';
+  String get buttonCancel => 'Cancel';
+  String get buttonNext => 'Next';
+  String get buttonBack => 'Back';
+  String get buttonSend => 'Send';
+  String get buttonLike => 'Like';
+  String get buttonComment => 'Comment';
+  String get buttonShare => 'Share';
+  String get buttonSearch => 'Search';
+  String get buttonAddPost => 'Create Post';
+  String get buttonStartChat => 'Start Chat';
+  String get buttonCreateGroup => 'Create Group';
+  String get buttonEditProfile => 'Edit Profile';
+
+  // Labels
+  String get labelEmail => 'Email';
+  String get labelPassword => 'Password';
+  String get labelConfirmPassword => 'Confirm Password';
+  String get labelPhoneNumber => 'Phone Number';
+  String get labelFullName => 'Full Name';
+  String get labelFarmName => 'Farm Name';
+  String get labelLocation => 'Location';
+  String get labelBio => 'About';
+  String get labelProfilePhoto => 'Profile Photo';
+  String get labelFarmType => 'Farm Type';
+  String get labelAgriculturalProducts => 'Agricultural Products';
+
+  // Hints
+  String get hintEnterEmail => 'Enter your email';
+  String get hintEnterPassword => 'Enter your password';
+  String get hintEnterFullName => 'Enter your full name';
+  String get hintEnterFarmName => 'Enter your farm name';
+  String get hintSearchPosts => 'Search posts...';
+  String get hintSearchUsers => 'Search users...';
+  String get hintWriteMessage => 'Write a message...';
+  String get hintWriteComment => 'Write a comment...';
+
+  // Validation
+  String get validationEmailRequired => 'Email is required';
+  String get validationInvalidEmail => 'Invalid email address';
+  String get validationPasswordRequired => 'Password is required';
+  String get validationPasswordLength => 'Password must be at least 8 characters';
+  String get validationPasswordMatch => 'Passwords do not match';
+  String get validationNameRequired => 'Name is required';
+  String get validationPhoneRequired => 'Phone number is required';
+
+  // Errors
+  String get errorLoadingPosts => 'Error loading posts';
+  String get errorLoadingChats => 'Error loading chats';
+  String get errorCreatingPost => 'Error creating post';
+  String get errorSendingMessage => 'Error sending message';
+  String get errorLoginFailed => 'Login failed';
+  String get errorRegisterFailed => 'Registration failed';
+  String get errorProfileUpdateFailed => 'Error updating profile';
+  String get errorNetworkError => 'Network error';
+
+  // Success
+  String get successPostCreated => 'Post created successfully';
+  String get successProfileUpdated => 'Profile updated successfully';
+  String get successMessageSent => 'Message sent successfully';
+  String get successRegistered => 'Registered successfully';
+
+  // Empty states
+  String get emptyPostsFeed => 'No posts yet';
+  String get emptyChats => 'No chats yet';
+  String get emptyGroups => 'No groups yet';
+
+  // Premium
+  String get premiumBadge => 'Premium';
+  String get premiumOnlyFeature => 'Premium Only';
+  String get specialistCall => 'Expert Video Call';
+
+  // AI
+  String get agroBot => 'AGRO-BOT';
+  String get agroBotQuestion => 'Q&A';
+  String get expertSupport => 'Expert Support';
+  String get aiAssistant => 'AI Assistant';
+
+  // Weather
+  String get weatherToday => 'Today\'s Weather';
+  String get temperature => 'Temperature';
+  String get humidity => 'Humidity';
+  String get windSpeed => 'Wind Speed';
+  String get rainfall => 'Rainfall';
+
+  // Screen titles
+  String get feedTitle => 'Farmer Feed';
+  String get messagesTitle => 'Messages';
+  String get groupsTitle => 'Groups';
+  String get weatherTitle => 'Weather Forecast';
+  String get supportTitle => 'Support & AI';
+
+  // General
+  String get welcomeMessage => 'Welcome to Agranova!';
+  String get loadingText => 'Loading...';
+
+  // User
+  String get followers => 'Followers';
+  String get following => 'Following';
+  String get posts => 'Posts';
+
+  // Status
+  String get lastSeen => 'Last Seen';
+  String get online => 'Online';
+  String get offline => 'Offline';
+
+  // Groups
+  String get groupMembers => 'Members';
+  String get groupDescription => 'Group Description';
+  String get joinGroup => 'Join Group';
+  String get leaveGroup => 'Leave Group';
+  String get groupSettings => 'Group Settings';
 }
 
 class AppLocalizationsEn extends AppLocalizations {
   @override
-  String get tabAnaSehife => 'Home';
+  String get appTitle => 'Agranova';
   @override
-  String get tabMessaging => 'Messages';
+  String get appSubtitle => 'Farmer Community';
   @override
-  String get tabGroups => 'Groups';
+  String get tabAnaSehife => 'Feed';
   @override
-  String get tabWeather => 'Weather';
+  String get tabSohbetler => 'Messages';
   @override
-  String get tabSupport => 'Support';
+  String get tabQruplar => 'Groups';
   @override
-  String get login => 'Login';
+  String get tabHava => 'Weather';
   @override
-  String get register => 'Register';
+  String get tabDastek => 'Support';
   @override
-  String get email => 'Email';
+  String get buttonLogin => 'Login';
   @override
-  String get password => 'Password';
+  String get buttonRegister => 'Register';
   @override
-  String get forgotPassword => 'Forgot Password?';
+  String get buttonLogout => 'Logout';
   @override
-  String get dontHaveAccount => 'Don\'t have an account?';
+  String get buttonSave => 'Save';
   @override
-  String get alreadyHaveAccount => 'Already have an account?';
+  String get buttonCancel => 'Cancel';
   @override
-  String get name => 'Name';
+  String get buttonNext => 'Next';
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get buttonBack => 'Back';
   @override
-  String get create => 'Create';
+  String get buttonSend => 'Send';
   @override
-  String get cancel => 'Cancel';
+  String get buttonLike => 'Like';
   @override
-  String get save => 'Save';
+  String get buttonComment => 'Comment';
   @override
-  String get delete => 'Delete';
+  String get buttonShare => 'Share';
   @override
-  String get edit => 'Edit';
+  String get buttonSearch => 'Search';
   @override
-  String get close => 'Close';
+  String get buttonAddPost => 'Create Post';
   @override
-  String get loading => 'Loading...';
+  String get buttonStartChat => 'Start Chat';
   @override
-  String get error => 'Error';
+  String get buttonCreateGroup => 'Create Group';
   @override
-  String get success => 'Success';
+  String get buttonEditProfile => 'Edit Profile';
   @override
-  String get message => 'Message';
+  String get labelEmail => 'Email';
   @override
-  String get messages => 'Messages';
+  String get labelPassword => 'Password';
   @override
-  String get group => 'Group';
+  String get labelConfirmPassword => 'Confirm Password';
   @override
-  String get groups => 'Groups';
+  String get labelPhoneNumber => 'Phone Number';
   @override
-  String get weather => 'Weather';
+  String get labelFullName => 'Full Name';
   @override
-  String get support => 'Support';
+  String get labelFarmName => 'Farm Name';
   @override
-  String get feed => 'Feed';
+  String get labelLocation => 'Location';
   @override
-  String get post => 'Post';
+  String get labelBio => 'About';
   @override
-  String get posts => 'Posts';
+  String get labelProfilePhoto => 'Profile Photo';
   @override
-  String get comment => 'Comment';
+  String get labelFarmType => 'Farm Type';
   @override
-  String get comments => 'Comments';
+  String get labelAgriculturalProducts => 'Agricultural Products';
   @override
-  String get like => 'Like';
+  String get hintEnterEmail => 'Enter your email';
   @override
-  String get likes => 'Likes';
+  String get hintEnterPassword => 'Enter your password';
   @override
-  String get share => 'Share';
+  String get hintEnterFullName => 'Enter your full name';
   @override
-  String get search => 'Search';
+  String get hintEnterFarmName => 'Enter your farm name';
   @override
-  String get settings => 'Settings';
+  String get hintSearchPosts => 'Search posts...';
   @override
-  String get profile => 'Profile';
+  String get hintSearchUsers => 'Search users...';
   @override
-  String get logout => 'Logout';
+  String get hintWriteMessage => 'Write a message...';
   @override
-  String get yes => 'Yes';
+  String get hintWriteComment => 'Write a comment...';
   @override
-  String get no => 'No';
+  String get validationEmailRequired => 'Email is required';
   @override
-  String get ok => 'OK';
+  String get validationInvalidEmail => 'Invalid email address';
   @override
-  String get following => 'Following';
+  String get validationPasswordRequired => 'Password is required';
   @override
-  String get followers => 'Followers';
+  String get validationPasswordLength => 'Password must be at least 8 characters';
   @override
-  String get follow => 'Follow';
+  String get validationPasswordMatch => 'Passwords do not match';
   @override
-  String get unfollow => 'Unfollow';
+  String get validationNameRequired => 'Name is required';
   @override
-  String get createPost => 'Create Post';
+  String get validationPhoneRequired => 'Phone number is required';
   @override
-  String get writeYourPost => 'Write your post...';
+  String get errorLoadingPosts => 'Error loading posts';
   @override
-  String get addImage => 'Add Image';
+  String get errorLoadingChats => 'Error loading chats';
   @override
-  String get uploadImage => 'Upload Image';
+  String get errorCreatingPost => 'Error creating post';
   @override
-  String get expertConsultation => 'Expert Consultation';
+  String get errorSendingMessage => 'Error sending message';
   @override
-  String get bookCall => 'Book Call';
+  String get errorLoginFailed => 'Login failed';
   @override
-  String get premium => 'Premium';
+  String get errorRegisterFailed => 'Registration failed';
   @override
-  String get upgradeToPremium => 'Upgrade to Premium';
+  String get errorProfileUpdateFailed => 'Error updating profile';
+  @override
+  String get errorNetworkError => 'Network error';
+  @override
+  String get successPostCreated => 'Post created successfully';
+  @override
+  String get successProfileUpdated => 'Profile updated successfully';
+  @override
+  String get successMessageSent => 'Message sent successfully';
+  @override
+  String get successRegistered => 'Registered successfully';
+  @override
+  String get emptyPostsFeed => 'No posts yet';
+  @override
+  String get emptyChats => 'No chats yet';
+  @override
+  String get emptyGroups => 'No groups yet';
+  @override
+  String get premiumBadge => 'Premium';
+  @override
+  String get premiumOnlyFeature => 'Premium Only';
+  @override
+  String get specialistCall => 'Expert Video Call';
+  @override
+  String get agroBot => 'AGRO-BOT';
+  @override
+  String get agroBotQuestion => 'Q&A';
+  @override
+  String get expertSupport => 'Expert Support';
   @override
   String get aiAssistant => 'AI Assistant';
   @override
-  String get sendMessage => 'Send Message';
-  @override
-  String get typeMessage => 'Type your message...';
-  @override
-  String get location => 'Location';
+  String get weatherToday => 'Today\'s Weather';
   @override
   String get temperature => 'Temperature';
   @override
   String get humidity => 'Humidity';
   @override
   String get windSpeed => 'Wind Speed';
+  @override
+  String get rainfall => 'Rainfall';
+  @override
+  String get feedTitle => 'Farmer Feed';
+  @override
+  String get messagesTitle => 'Messages';
+  @override
+  String get groupsTitle => 'Groups';
+  @override
+  String get weatherTitle => 'Weather Forecast';
+  @override
+  String get supportTitle => 'Support & AI';
+  @override
+  String get welcomeMessage => 'Welcome to Agranova!';
+  @override
+  String get loadingText => 'Loading...';
+  @override
+  String get followers => 'Followers';
+  @override
+  String get following => 'Following';
+  @override
+  String get posts => 'Posts';
+  @override
+  String get lastSeen => 'Last Seen';
+  @override
+  String get online => 'Online';
+  @override
+  String get offline => 'Offline';
+  @override
+  String get groupMembers => 'Members';
+  @override
+  String get groupDescription => 'Group Description';
+  @override
+  String get joinGroup => 'Join Group';
+  @override
+  String get leaveGroup => 'Leave Group';
+  @override
+  String get groupSettings => 'Group Settings';
 }

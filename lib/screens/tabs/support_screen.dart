@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../config/theme.dart';
 import '../../services/premium_service.dart';
+import '../../models/app_localizations_stub.dart';
 import '../support/ai_chat_screen.dart';
 import '../support/expert_call_screen.dart';
 import '../support/premium_paywall_screen.dart';
@@ -13,6 +14,10 @@ class SupportScreen extends StatefulWidget {
 }
 
 class _SupportScreenState extends State<SupportScreen> {
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
+
   Future<void> _handleExpertCallTap(BuildContext context) async {
     final isPremium = await PremiumService().isPremium();
     if (isPremium) {
@@ -387,8 +392,6 @@ class FAQItem extends StatefulWidget {
 }
 
 class _FAQItemState extends State<FAQItem> {
-  bool _isExpanded = false;
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -396,9 +399,6 @@ class _FAQItemState extends State<FAQItem> {
       margin: const EdgeInsets.only(bottom: 12),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
-        onExpansionChanged: (expanded) {
-          setState(() => _isExpanded = expanded);
-        },
         title: Text(
           widget.question,
           style: Theme.of(context).textTheme.titleSmall?.copyWith(

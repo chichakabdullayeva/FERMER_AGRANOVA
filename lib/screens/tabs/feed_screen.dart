@@ -92,16 +92,11 @@ class _FeedScreenState extends State<FeedScreen> {
                   );
                 }
 
-                // Get following list from user profile
-                final followingList = userSnapshot.data?.following ?? [];
+                // Get all posts for feed
+                final followingList = <String>[];
 
                 return StreamBuilder<List<PostModel>>(
-                  stream: followingList.isEmpty
-                      ? _postService.getPostsStream(limit: 50)
-                      : _postService.getFollowingPostsStream(
-                          followingUserIds: followingList,
-                          limit: 50,
-                        ),
+                  stream: _postService.getPostsStream(limit: 50),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(

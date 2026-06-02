@@ -162,7 +162,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             },
                             child: _StatColumn(
                               label: loc.followers,
-                              value: '${user.followers.length}',
+                              value: '${user.followers}',
                               onTap: () {},
                             ),
                           ),
@@ -185,7 +185,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             },
                             child: _StatColumn(
                               label: loc.following,
-                              value: '${user.following.length}',
+                              value: '${user.following}',
                               onTap: () {},
                             ),
                           ),

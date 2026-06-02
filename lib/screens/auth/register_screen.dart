@@ -64,7 +64,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         location: _locationController.text.trim(),
       );
       widget.onRegisterSuccess();
-    } catch (e) {
+    } catch (e, st) {
+      // Log error and stack trace to console for debugging
+      // (Visible in terminal when running `flutter run`)
+      debugPrint('Register error: $e');
+      debugPrint('$st');
       setState(() {
         _errorMessage = e.toString();
       });

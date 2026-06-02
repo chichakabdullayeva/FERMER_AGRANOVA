@@ -12,7 +12,7 @@ class MessageService {
   MessageService._internal();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  const _uuid = Uuid();
+  final _uuid = Uuid();
 
   /// Generate conversation ID from two user IDs (consistent ordering)
   String _generateConversationId(String userId1, String userId2) {

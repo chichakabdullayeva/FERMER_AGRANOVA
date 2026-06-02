@@ -34,7 +34,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   bool _isUploading = false;
   String? _errorMessage;
   int _characterCount = 0;
-  const int _maxCharacters = 500;
+  static const int _maxCharacters = 500;
 
   @override
   void dispose() {

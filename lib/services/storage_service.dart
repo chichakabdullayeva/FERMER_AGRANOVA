@@ -12,7 +12,7 @@ class StorageService {
   StorageService._internal();
 
   final _storage = FirebaseStorage.instance;
-  const _uuid = Uuid();
+  final _uuid = Uuid();
 
   // Upload post media (image or video)
   Future<String> uploadPostMedia({

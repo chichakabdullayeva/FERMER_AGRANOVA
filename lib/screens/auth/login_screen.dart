@@ -52,7 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text,
       );
       widget.onLoginSuccess();
-    } catch (e) {
+    } catch (e, st) {
+      // Log error and stack trace to console for debugging
+      // (Visible in terminal when running `flutter run`)
+      debugPrint('Login error: $e');
+      debugPrint('$st');
       setState(() {
         _errorMessage = e.toString();
       });

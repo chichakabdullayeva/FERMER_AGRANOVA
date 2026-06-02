@@ -235,6 +235,50 @@ class UserService {
       throw UserException('Failed to get user stats: $e');
     }
   }
+
+  // Get list of followers for a user
+  Future<List<UserModel>> getFollowersList(String uid) async {
+    try {
+      final followersSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('followers')
+          .get();
+
+      final followersList = <UserModel>[];
+      for (final doc in followersSnapshot.docs) {
+        final followerProfile = await getUserProfile(doc.id);
+        if (followerProfile != null) {
+          followersList.add(followerProfile);
+        }
+      }
+      return followersList;
+    } catch (e) {
+      throw UserException('Failed to get followers list: $e');
+    }
+  }
+
+  // Get list of users that a user is following
+  Future<List<UserModel>> getFollowingList(String uid) async {
+    try {
+      final followingSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('following')
+          .get();
+
+      final followingList = <UserModel>[];
+      for (final doc in followingSnapshot.docs) {
+        final followingProfile = await getUserProfile(doc.id);
+        if (followingProfile != null) {
+          followingList.add(followingProfile);
+        }
+      }
+      return followingList;
+    } catch (e) {
+      throw UserException('Failed to get following list: $e');
+    }
+  }
 }
 
 class UserException implements Exception {
