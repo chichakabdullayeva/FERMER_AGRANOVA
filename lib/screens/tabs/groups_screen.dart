@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
+import '../groups/group_details_screen.dart';
+import '../groups/create_group_screen.dart';
+import '../../models/app_localizations_stub.dart';
 
 class GroupsScreen extends StatefulWidget {
   const GroupsScreen({Key? key}) : super(key: key);
@@ -12,6 +14,10 @@ class GroupsScreen extends StatefulWidget {
 class _GroupsScreenState extends State<GroupsScreen> {
   final TextEditingController _searchController = TextEditingController();
 
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
+
   @override
   void dispose() {
     _searchController.dispose();
@@ -20,7 +26,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -71,7 +77,10 @@ class _GroupsScreenState extends State<GroupsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: Navigate to create group screen
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const CreateGroupScreen()),
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -104,7 +113,27 @@ class GroupCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // TODO: Navigate to group details
+        final emojis = ['👥', '🌾', '🧬', '🎪', '🌱', '🐄'];
+        final descriptions = [
+          'Fermerlər üçün yerli satış, resurs paylaşımı və kollektiv qərarlar.',
+          'Buğda yetişdirilməsi texnikası, gübrələmə və məhsul planlaması.',
+          'Biotexnologiya yeniliklərini və sağlamlıqifiksiyaları müzakirə edin.',
+          'Kənd sərgisi, məhsul təqdimatı və regional tədbirlər.',
+          'Toxum tədarükü, dəyişmə və keyfiyyət yoxlanışı.',
+          'Heyvandarlıq qrupunda yem, sağlamlıq və yetişdirmə məsləhətləri.',
+        ];
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => GroupDetailsScreen(
+              name: groupNames[index % 6],
+              description: descriptions[index % 6],
+              members: memberCounts[index % 6],
+              emoji: emojis[index % 6],
+            ),
+          ),
+        );
       },
       child: Card(
         elevation: 4,

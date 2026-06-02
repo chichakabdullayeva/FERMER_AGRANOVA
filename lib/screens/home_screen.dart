@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../tabs/feed_screen.dart';
-import '../tabs/messages_screen.dart';
-import '../tabs/groups_screen.dart';
-import '../tabs/weather_screen.dart';
-import '../tabs/support_screen.dart';
-import '../../config/theme.dart';
+import './tabs/feed_screen.dart';
+import './tabs/messages_screen.dart';
+import './tabs/groups_screen.dart';
+import './tabs/weather_screen.dart';
+import './tabs/support_screen.dart';
+import '../config/theme.dart';
+import '../models/app_localizations_stub.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,16 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   late List<Widget> _screens;
-
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
   @override
   void initState() {
     super.initState();
     _screens = [
       const FeedScreen(),
       const MessagesScreen(),
-      const GroupsScreen(),
-      const WeatherScreen(),
-      const SupportScreen(),
+      GroupsScreen(),
+      WeatherScreen(),
+      SupportScreen(),
     ];
   }
 
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
 
     return Scaffold(
       body: IndexedStack(
@@ -56,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: loc.tabAnaSehife,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.chat_outlined),
+            icon: const Icon(Icons.chat),
             activeIcon: const Icon(Icons.chat),
             label: loc.tabSohbetler,
           ),

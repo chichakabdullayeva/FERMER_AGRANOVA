@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'config/theme.dart';
 import 'services/firebase_service.dart';
+import 'services/notification_service.dart';
 import 'services/auth_service.dart';
 import 'screens/home_screen.dart';
 import 'screens/auth/login_screen.dart';
@@ -12,6 +13,7 @@ import 'screens/auth/register_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseService.initialize();
+  await NotificationService.initialize();
   runApp(const AgranovaApp());
 }
 
@@ -31,8 +33,7 @@ class _AgranovaAppState extends State<AgranovaApp> {
     return MaterialApp(
       title: 'Agranova',
       theme: AppTheme.lightTheme,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

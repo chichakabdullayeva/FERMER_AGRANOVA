@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../services/auth_service.dart';
 import '../../services/post_service.dart';
 import '../../services/user_service.dart';
 import '../../models/post_model.dart';
+import '../../models/user_model.dart';
 import '../posts/create_post_screen.dart';
 import '../posts/comments_screen.dart';
+import '../../models/app_localizations_stub.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({Key? key}) : super(key: key);
@@ -20,6 +21,10 @@ class _FeedScreenState extends State<FeedScreen> {
   final _postService = PostService();
   final _authService = AuthService();
   final _userService = UserService();
+
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
 
   @override
   void dispose() {
@@ -39,7 +44,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     final currentUser = _authService.getCurrentUser();
 
     return Scaffold(
@@ -347,7 +352,7 @@ class FeedPostCard extends StatelessWidget {
                 // Comment Button
                 Expanded(
                   child: _InteractionButton(
-                    icon: Icons.chat_outline,
+                    icon: Icons.chat,
                     label: '${post.comments}',
                     onTap: onCommentTap,
                   ),

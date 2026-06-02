@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../models/message_model.dart';
 import '../../services/auth_service.dart';
 import '../../services/message_service.dart';
 import '../messages/chat_detail_screen.dart';
+import '../../models/app_localizations_stub.dart';
 
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({Key? key}) : super(key: key);
@@ -17,6 +17,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
   final TextEditingController _searchController = TextEditingController();
   final _messageService = MessageService();
   final _authService = AuthService();
+
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
 
   @override
   void dispose() {
@@ -41,7 +45,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     final currentUser = _authService.getCurrentUser();
 
     return Scaffold(
@@ -118,7 +122,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.chat_outlined,
+                                Icons.chat,
                                 size: 48,
                                 color: AppColors.mediumGray,
                               ),

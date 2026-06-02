@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../models/user_model.dart';
 import '../../services/auth_service.dart';

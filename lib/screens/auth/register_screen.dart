@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../services/auth_service.dart';
+import '../../models/app_localizations_stub.dart';
 
 class RegisterScreen extends StatefulWidget {
   final VoidCallback onRegisterSuccess;
@@ -31,6 +31,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String? _errorMessage;
 
   final _authService = AuthService();
+
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
 
   @override
   void dispose() {
@@ -71,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
 
     return Scaffold(
       body: SingleChildScrollView(

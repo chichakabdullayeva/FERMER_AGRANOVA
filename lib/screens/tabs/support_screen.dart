@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
+import '../../services/premium_service.dart';
+import '../support/ai_chat_screen.dart';
+import '../support/expert_call_screen.dart';
+import '../support/premium_paywall_screen.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({Key? key}) : super(key: key);
@@ -10,9 +13,25 @@ class SupportScreen extends StatefulWidget {
 }
 
 class _SupportScreenState extends State<SupportScreen> {
+  Future<void> _handleExpertCallTap(BuildContext context) async {
+    final isPremium = await PremiumService().isPremium();
+    if (isPremium) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const ExpertCallScreen()),
+      );
+      return;
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PremiumPaywallScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -86,6 +105,18 @@ class _SupportScreenState extends State<SupportScreen> {
                       color: AppColors.sandBeige,
                     ),
                   ),
+                  const SizedBox(height: 14),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      _TopicChip(label: 'Suvarma'),
+                      _TopicChip(label: 'Hava proqnozu'),
+                      _TopicChip(label: 'Pestisid'),
+                      _TopicChip(label: 'Torpaq testi'),
+                    ],
+                  ),
                   const SizedBox(height: 20),
 
                   // Start Chat Button
@@ -93,7 +124,10 @@ class _SupportScreenState extends State<SupportScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: Navigate to AI chat screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const AiChatScreen()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.warmYellow,
@@ -207,9 +241,7 @@ class _SupportScreenState extends State<SupportScreen> {
                           ),
                           const SizedBox(width: 8),
                           ElevatedButton(
-                            onPressed: () {
-                              // TODO: Show premium paywall
-                            },
+                            onPressed: () => _handleExpertCallTap(context),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.darkGreen,
                               padding: const EdgeInsets.symmetric(
@@ -386,6 +418,25 @@ class _FAQItemState extends State<FAQItem> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _TopicChip extends StatelessWidget {
+  final String label;
+
+  const _TopicChip({
+    Key? key,
+    required this.label,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      label: Text(label),
+      backgroundColor: AppColors.white.withOpacity(0.14),
+      labelStyle: const TextStyle(color: AppColors.warmYellow),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
     );
   }
 }

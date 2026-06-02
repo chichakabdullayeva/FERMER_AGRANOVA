@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../services/auth_service.dart';
+import '../../models/app_localizations_stub.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback onLoginSuccess;
@@ -26,6 +26,10 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _errorMessage;
 
   final _authService = AuthService();
+
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
 
   @override
   void dispose() {
@@ -59,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(

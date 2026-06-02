@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../config/theme.dart';
 import '../../services/auth_service.dart';
@@ -8,6 +7,7 @@ import '../../services/post_service.dart';
 import '../../services/storage_service.dart';
 import '../../services/user_service.dart';
 import '../../models/user_model.dart';
+import '../../models/app_localizations_stub.dart';
 
 class CreatePostScreen extends StatefulWidget {
   const CreatePostScreen({Key? key}) : super(key: key);
@@ -24,6 +24,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   final _storageService = StorageService();
   final _authService = AuthService();
   final _userService = UserService();
+
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
 
   List<XFile> _selectedImages = [];
   List<String> _mediaTypes = [];
@@ -66,7 +70,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   }
 
   Future<void> _createPost(UserModel userProfile) async {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     
     if (_descriptionController.text.trim().isEmpty) {
       setState(() => _errorMessage = 'لطفا متن پست را وارد کنید');
@@ -123,7 +127,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     final currentUser = _authService.getCurrentUser();
 
     return Scaffold(

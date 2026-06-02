@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../services/auth_service.dart';
 import '../../services/user_service.dart';
 import '../../models/user_model.dart';
 import 'followers_screen.dart';
 import 'following_screen.dart';
+import '../../models/app_localizations_stub.dart';
 
 class UserProfileScreen extends StatefulWidget {
   final String userId;
@@ -23,9 +23,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   final _userService = UserService();
   final _authService = AuthService();
 
+  AppLocalizations _localizations(BuildContext context) {
+    return AppLocalizations.of(context) ?? AppLocalizationsEn();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc = _localizations(context);
     final currentUser = _authService.getCurrentUser();
     final isOwnProfile = currentUser?.uid == widget.userId;
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme.dart';
 import '../../models/message_model.dart';
 import '../../services/auth_service.dart';
@@ -213,7 +212,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.chat_outlined,
+                          Icons.chat,
                           size: 64,
                           color: AppColors.mediumGray,
                         ),
